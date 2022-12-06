@@ -35,9 +35,11 @@ public struct GOONetwork {
 
 }
 
-enum NetworkError: String, Error {
+enum NetworkError: String, Error, Identifiable, CaseIterable {
     case urlError
     case responseError
     case dataError
     case decodeError
+
+    var id: NetworkError { self }
 }
