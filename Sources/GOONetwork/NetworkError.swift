@@ -1,15 +1,15 @@
 import Foundation
 
-enum NetworkError: String, Error, Identifiable, CaseIterable {
+public enum NetworkError: String, Error, Identifiable, CaseIterable {
     case urlError
     case responseError
     case dataError
     case decodeError
     case unknownError
 
-    var id: NetworkError { self }
+    public var id: NetworkError { self }
 
-    var localizedDescription: String {
+    public var localizedDescription: String {
         switch self {
             case .urlError:
                 return "There was an error with the URL."
