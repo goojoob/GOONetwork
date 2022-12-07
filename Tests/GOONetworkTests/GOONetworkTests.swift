@@ -92,4 +92,28 @@ final class GOONetworkTests: XCTestCase {
 
         wait(for: [expectation], timeout: 10.0)
     }
+
+    func testNetworkError() {
+        // Test that the `id` property returns the correct value.
+        XCTAssertEqual(NetworkError.urlError.id, NetworkError.urlError)
+        XCTAssertEqual(NetworkError.responseError.id, NetworkError.responseError)
+        XCTAssertEqual(NetworkError.dataError.id, NetworkError.dataError)
+        XCTAssertEqual(NetworkError.decodeError.id, NetworkError.decodeError)
+        XCTAssertEqual(NetworkError.unknownError.id, NetworkError.unknownError)
+
+        // Test that the `localizedDescription` property returns the correct value.
+        XCTAssertEqual(NetworkError.urlError.localizedDescription, "There was an error with the URL.")
+        XCTAssertEqual(NetworkError.responseError.localizedDescription, "There was an error with the server's response.")
+        XCTAssertEqual(NetworkError.dataError.localizedDescription, "There was an error with the data returned by the server.")
+        XCTAssertEqual(NetworkError.decodeError.localizedDescription, "There was an error decoding the data returned by the server.")
+        XCTAssertEqual(NetworkError.unknownError.localizedDescription, "An unknown error occurred.")
+
+        // Test that the `CaseIterable` protocol is implemented correctly.
+        XCTAssertEqual(NetworkError.allCases.count, 5)
+        XCTAssertTrue(NetworkError.allCases.contains(.urlError))
+        XCTAssertTrue(NetworkError.allCases.contains(.responseError))
+        XCTAssertTrue(NetworkError.allCases.contains(.dataError))
+        XCTAssertTrue(NetworkError.allCases.contains(.decodeError))
+        XCTAssertTrue(NetworkError.allCases.contains(.unknownError))
+    }
 }
